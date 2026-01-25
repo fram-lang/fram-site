@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <title>$pagetitle$</title>
+    <meta name="description" content="$description-meta$">
+    <link rel="icon" type='image/png' href="/img/favicon.png">
+    <link rel="stylesheet" type="text/css" href="/css/landing.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <div id="splash">
+      <div id="splash-text">
+        <h1>$title$</h1>
+        $abstract$
+        <p><a href="$link-standout.url$" class="link-standout">
+          $link-standout.title$
+        </a></p>
+        <nav>
+          <ul>
+            $for(links-nav)$
+            <li><a href="$links-nav.url$">$links-nav.title$</a></li>
+            $endfor$
+          </ul>
+        </nav>
+      </div>
+      <img
+        id="splash-img" src="/img/fram.svg"
+        alt="A monochromatic depiction of the ship Fram.">
+    </div>
+    <main>
+      $body$
+    </main>
+    <footer>
+      <p>
+        <a href="https://github.com/fram-lang/fram-site">
+          The source for this site is available on GitHub.
+        </a>
+      </p>
+    </footer>
+  </body>
+</html>

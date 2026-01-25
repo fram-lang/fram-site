@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE language
+[
+  <!ENTITY digit "[0-9]">
+  <!ENTITY lid_start "[a-z_]">
+  <!ENTITY uid_start "[A-Z]">
+  <!ENTITY var_char "(&lid_start;|&uid_start;|&digit;|&apos;)">
+  <!ENTITY lid "&lid_start;&var_char;*">
+  <!ENTITY uid "&uid_start;&var_char;*">
+  <!ENTITY implicit "~&lid;">
+  <!ENTITY optional "\?&lid;">
+  <!ENTITY decimal_number "&digit;+L?">
+  <!ENTITY baseN_number "(0[bB][01]+|0[oO][0-7]+|0[xX][0-9a-fA-F]+)L?">
+]>
+<language
+  name="Fram"
+  section="Sources"
+  version="1"
+  kateversion="5.79"
+  extensions="*.fram">
+  <highlighting>
+    <list name="keywords">
+      <item>abstr</item>
+      <item>as</item>
+      <item>data</item>
+      <item>effect</item>
+      <item>else</item>
+      <item>end</item>
+      <item>extern</item>
+      <item>finally</item>
+      <item>fn</item>
+      <item>handle</item>
+      <item>handler</item>
+      <item>if</item>
+      <item>import</item>
+      <item>in</item>
+      <item>label</item>
+      <item>let</item>
+      <item>match</item>
+      <item>method</item>
+      <item>module</item>
+      <item>of</item>
+      <item>open</item>
+      <item>parameter</item>
+      <item>pub</item>
+      <item>rec</item>
+      <item>return</item>
+      <item>section</item>
+      <item>then</item>
+      <item>type</item>
+      <item>with</item>
+    </list>
+    <contexts>
+      <context attribute="Normal Text" lineEndContext="#stay" name="Normal">
+        <DetectChar attribute="Comment" char="#" context="Single-line Comment"/>
+        <RegExpr attribute="Comment" context="Multi-line Comment" String="{#([^\s]*)" beginRegion="RegionComment"/>
+        <keyword attribute="Keyword" context="#stay" String="keywords" />
+        <RegExpr attribute="BaseN" context="#stay" String="&baseN_number;" />
+        <RegExpr attribute="Decimal" context="#stay" String="&decimal_number;" />
+        <DetectChar attribute="Char" context="Char" char="&apos;" />
+        <DetectChar attribute="String" context="String" char="&quot;" />
+        <RegExpr attribute="Type" context="#stay" String="&uid;" />
+        <RegExpr attribute="Implicit" context="#stay" String="&implicit;" />
+        <RegExpr attribute="Optional" context="#stay" String="&optional;" />
+      </context>
+      <context name="Single-line Comment" attribute="Comment" lineEndContext="#pop">
+      </context>
+      <context name="Multi-line Comment" attribute="Comment" lineEndContext="#stay">
+        <StringDetect attribute="Comment" context="#pop" String="%1#}" dynamic="true" endRegion="RegionComment"/>
+      </context>
+      <context attribute="Char" lineEndContext="#stay" name="Char">
+        <DetectChar attribute="Char" context="#pop" char="&apos;" />
+      </context>
+      <context attribute="String" lineEndContext="#stay" name="String">
+        <DetectChar attribute="String" context="#pop" char="&quot;" />
+      </context>
+    </contexts>
+    <itemDatas>
+      <itemData name="Normal" defStyleNum="dsNormal" />
+      <itemData name="Comment" defStyleNum="dsComment" />
+      <itemData name="Keyword" defStyleNum="dsKeyword" />
+      <itemData name="Decimal" defStyleNum="dsDecVal" />
+      <itemData name="BaseN" defStyleNum="dsBaseN" />
+      <itemData name="Char" defStyleNum="dsString" />
+      <itemData name="String" defStyleNum="dsChar" />
+      <itemData name="Type" defStyleNum="dsDataType" />
+      <itemData name="Implicit" defStyleNum="dsVariable" />
+      <itemData name="Optional" defStyleNum="dsVariable" />
+    </itemDatas>
+  </highlighting>
+</language>
