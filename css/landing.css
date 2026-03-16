@@ -78,6 +78,10 @@ a.link-standout:focus, a.link-standout:hover {
 /* Main content                                                              */
 /* ========================================================================= */
 
+main {
+  padding: 0 2%;
+}
+
 .landing-intro {
   margin: auto;
   max-width: 40em;
@@ -103,7 +107,6 @@ a.link-standout:focus, a.link-standout:hover {
 
 .feature-description {
   flex-grow: 2;
-  flex-shrink 1;
   max-width: 40em;
   min-width: 16em;
   margin: 0 1em;
@@ -116,8 +119,12 @@ a.link-standout:focus, a.link-standout:hover {
   border: 4px solid var(--accent-bg);
   overflow-x: scroll;
   font-size: 0.8rem;
+  flex-shrink: 1;
   flex-grow: 1;
-  flex-shrink 1;
-  max-width: 30em;
   min-width: 16em;
+  max-width: 35em;
+}
+
+.feature-code .sourceCode {
+  min-width: 58ch;
 }
