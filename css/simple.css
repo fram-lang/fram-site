@@ -1,0 +1,54 @@
+/* Site header                                                               */
+/* ========================================================================= */
+
+header {
+  background: var(--bg-secondary);
+  padding: 0 1em;
+}
+
+header nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+header nav li {
+  display: inline-block;
+  padding: 0;
+}
+
+header nav li a {
+  color: var(--fg);
+  display: block;
+  box-sizing: border-box;
+  font-weight: bold;
+  text-decoration: none;
+  height: 100%;
+  padding: 1em;
+}
+
+header nav li a:focus, header nav li a:hover {
+  color: var(--fg);
+  background-color: var(--accent-bg);
+  text-decoration: none;
+}
+
+.homepage-link {
+  padding: 0 1em;
+}
+
+.homepage-logo {
+  height: 3em;
+}
+
+/* Main content                                                              */
+/* ========================================================================= */
+
+main {
+  margin: auto;
+  max-width: 40em;
+  min-width: 16em;
+  padding: 1.5em 5%;
+}
