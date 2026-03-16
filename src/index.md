@@ -53,15 +53,21 @@ and
 
 :::feature-code
 ```fram
-{# Placeholder nonsense #}
+parameter ~say
 
-let lorem ipsum = dolor (Sit amet)
+let greeting name =
+  ~say ("Hello " + name + "!")
 
-handle (Consectetur adipiscing) with elit
+let farewell name =
+  ~say ("Bye " + name + "!")
 
-let lorem ipsum = dolor (Sit amet)
+let conversation {name, ?content} () =
+  greeting name; content.iter ~say; farewell name
 
-handle (Consectetur adipiscing) with elit
+let _ =
+  let ~say = printStrLn in
+  let content = "Isn't the weather nice?" in
+  conversation { content, name = "Fram" } ()
 ```
 :::
 :::
@@ -79,15 +85,11 @@ To learn the basics of Fram's effect system, see the
 
 :::feature-code
 ```fram
-{# Placeholder nonsense #}
+# greetAll : List String ->[IO] Unit
+let greetAll (all : List _) =
+  all.iter (fn x => printStrLn "Hello \{ x }!")
 
-let lorem ipsum = dolor (Sit amet)
-
-handle (Consectetur adipiscing) with elit
-
-let lorem ipsum = dolor (Sit amet)
-
-handle (Consectetur adipiscing) with elit
+let _ = greetAll [ "World", "Fram" ]
 ```
 :::
 :::
@@ -114,25 +116,24 @@ For more information, see the tutorial section on
 
 :::feature-code
 ```fram
-{# Placeholder nonsense #}
+data BT E = { select : {X} -> List X ->[E] X }
+parameter ~bt : BT _
 
-let lorem ipsum = dolor (Sit amet)
+let range a b = ~bt.select (List.init {i=a} b id)
+let fail () = ~bt.select []
 
-handle (Consectetur adipiscing) with elit
+let triples n =
+  let a = range 0 n
+  let b = range a n
+  let c = range b n
+  in
+  if a*a + b*b == c*c then (a, b, c) else fail ()
 
-let lorem ipsum = dolor (Sit amet)
-
-handle (Consectetur adipiscing) with elit
-
-{# Placeholder nonsense #}
-
-let lorem ipsum = dolor (Sit amet)
-
-handle (Consectetur adipiscing) with elit
-
-let lorem ipsum = dolor (Sit amet)
-
-handle (Consectetur adipiscing) with elit
+let _ =
+  handle ~bt =
+    BT { effect select xs = xs.iter resume }
+  in
+  printStrLn (triples 40).show
 ```
 :::
 :::
