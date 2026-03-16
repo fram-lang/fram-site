@@ -24,14 +24,17 @@ links-nav:
     url: "/publications.html"
 ---
 
-:::landing-features
+:::landing-intro
 ## Features
 
 Fram is a functional programming language with its roots in the ML family of
 languages. As one of the design goals, we strive for a small set of features
 that can express a wide range of programming constructs. Here we briefly
 describe some of these features.
+:::
 
+:::feature
+:::feature-description
 ### Named Parameters
 
 Many programming languages provide named function parameters, but Fram takes
@@ -46,7 +49,25 @@ For details, check out the tutorial sections on
 [named parameters](https://doc.fram-lang.org/intro/named-parameters.html)
 and
 [modules](https://doc.fram-lang.org/intro/modules.html).
+:::
 
+:::feature-code
+```fram
+{# Placeholder nonsense #}
+
+let lorem ipsum = dolor (Sit amet)
+
+handle (Consectetur adipiscing) with elit
+
+let lorem ipsum = dolor (Sit amet)
+
+handle (Consectetur adipiscing) with elit
+```
+:::
+:::
+
+:::feature
+:::feature-description
 ### Effect System
 
 Apart from types, Fram statically tracks all side effects in a program,
@@ -54,8 +75,25 @@ ensuring effect safety. However, thanks to effect inference, the programmer
 usually doesn't need to bother writing out effect annotations.
 To learn the basics of Fram's effect system, see the
 [effects tutorial](https://fram-lang.org/intro/effects.html).
+:::
 
+:::feature-code
+```fram
+{# Placeholder nonsense #}
 
+let lorem ipsum = dolor (Sit amet)
+
+handle (Consectetur adipiscing) with elit
+
+let lorem ipsum = dolor (Sit amet)
+
+handle (Consectetur adipiscing) with elit
+```
+:::
+:::
+
+:::feature
+:::feature-description
 ### Algebraic Effects
 
 Fram implements algebraic effect handlers, which can express computational
@@ -72,42 +110,29 @@ in order to connect the use of an effect with the correct handler.
 
 For more information, see the tutorial section on
 [effect handlers](https://doc.fram-lang.org/intro/effect-handlers.html).
-
 :::
 
-:::landing-code
+:::feature-code
 ```fram
-{# Find Pythagorean triples. #}
+{# Placeholder nonsense #}
 
-data BT E =
-  { flip : Unit ->[E] Bool
-  , fail : {X} -> Unit ->[E] X
-  }
+let lorem ipsum = dolor (Sit amet)
 
-method rec select (self : BT _) a b =
-  if a > b then self.fail ()
-  else if self.flip () then a
-  else self.select (a + 1) b
+handle (Consectetur adipiscing) with elit
 
-parameter ~bt : BT _
+let lorem ipsum = dolor (Sit amet)
 
-let triples n =
-  let a = ~bt.select 1 n
-  let b = ~bt.select a n
-  let c = ~bt.select b n
-  in
-  if a * a + b * b == c * c
-  then (a, b, c)
-  else ~bt.fail ()
+handle (Consectetur adipiscing) with elit
 
-let allTriples n =
-  handle ~bt = BT
-    { effect fail () = []
-    , effect flip () =
-        resume True + resume False
-    }
-    return triple => [triple]
-  in
-  triples n
+{# Placeholder nonsense #}
+
+let lorem ipsum = dolor (Sit amet)
+
+handle (Consectetur adipiscing) with elit
+
+let lorem ipsum = dolor (Sit amet)
+
+handle (Consectetur adipiscing) with elit
 ```
+:::
 :::

@@ -55,12 +55,12 @@ h1 {
 
 h2 {
   font-size: 2.75rem;
-  margin: 1.25em 0 .75em 0;
+  margin: .25em 0 .75em 0;
 }
 
 h3 {
   font-size: 1.75rem;
-  margin: 1em 0 .75em 0;
+  margin: .25em 0 .75em 0;
 }
 
 h1:before, h1:after, h2:before, h2:after, h3:before, h3:after {
