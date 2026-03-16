@@ -17,6 +17,12 @@ $(OUTDIR)/index.html: $(SRCDIR)/index.md $(TEMPLATES) | $(OUTDIR)
 		--syntax-definition templates/fram.xml \
 		-o $(OUTDIR)/index.html $(SRCDIR)/index.md
 
+$(OUTDIR)/%.html: $(SRCDIR)/%.md $(TEMPLATES) | $(OUTDIR)
+	$(PANDOC) -s -t html \
+		--template templates/simple.html \
+		--syntax-definition templates/fram.xml \
+		-o $@ $<
+
 $(OUTDIR)/css: css | $(OUTDIR)
 	cp -r css $(OUTDIR)
 
