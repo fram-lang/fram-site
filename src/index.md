@@ -1,13 +1,12 @@
 ---
 pagetitle: Fram Programming Language
 description-meta:
-  Fram, an experimental programming language with lexical algebraic effect
-  handlers and named parameters. It is being developed at the University of
-  Wrocław.
+  Fram, a programming language with lexical algebraic effect handlers and named
+  parameters. It is being developed at the University of Wrocław.
 title: Fram
 abstract: |
-  An experimental programming language equipped with lexical algebraic
-  effect handlers and a powerful named parameter mechanism.
+  A programming language equipped with lexical algebraic effect handlers and a
+  powerful named parameter mechanism.
   Fram is currently being developed at the
   [Institute of Computer Science, University of Wrocław](https://ii.uni.wroc.pl).
 link-standout:
@@ -41,7 +40,7 @@ Many programming languages provide named function parameters, but Fram takes
 this mechanism further by incorporating multiple language features into a
 uniform named parameter mechanism.
 These include regular named parameters, type parameters, optional parameters,
-implicit parameters, records, and even module functors.
+implicit parameters, records, existential types, and even module functors.
 Additionally, using sections, you can declare your parameters once but use them
 in several definitions.
 
@@ -100,8 +99,8 @@ let _ = greetAll [ "World", "Fram" ]
 ### Algebraic Effects
 
 Fram implements algebraic effect handlers, which can express computational
-effects such as mutable state, exceptions, generators, backtracking, and
-lightweight threads.
+effects such as mutable state, exceptions, generators, backtracking,
+lightweight threads, and more.
 Since the code that uses the effect can be defined separately from
 the effect's implementation (given by a handler), this approach
 lends itself well to modularity and reuse.
