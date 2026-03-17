@@ -61,13 +61,14 @@ let greeting name =
 let farewell name =
   ~say ("Bye " + name + "!")
 
-let conversation {name, ?content} () =
-  greeting name; content.iter ~say; farewell name
+let conversation {name, ?msg} () =
+  greeting name; msg.iter ~say; farewell name
 
 let _ =
-  let ~say = printStrLn in
-  let content = "Isn't the weather nice?" in
-  conversation { content, name = "Fram" } ()
+  let ~say = printStrLn
+  let msg = "Isn't the weather nice?"
+  in
+  conversation { msg, name = "Fram" } ()
 ```
 :::
 :::
@@ -86,7 +87,7 @@ To learn the basics of Fram's effect system, see the
 :::feature-code
 ```fram
 # greetAll : List String ->[IO] Unit
-let greetAll (all : List _) =
+let greetAll (all : List String) =
   all.iter (fn x => printStrLn "Hello \{ x }!")
 
 let _ = greetAll [ "World", "Fram" ]
@@ -123,7 +124,7 @@ let range a b = ~bt.select (List.init {i=a} b id)
 let fail () = ~bt.select []
 
 let triples n =
-  let a = range 0 n
+  let a = range 1 n
   let b = range a n
   let c = range b n
   in
