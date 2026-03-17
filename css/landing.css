@@ -106,23 +106,21 @@ main {
 }
 
 .feature-description {
-  flex-grow: 2;
+  margin: 0 1em;
   max-width: 40em;
   min-width: 16em;
-  margin: 0 1em;
 }
 
 .feature-code {
   background-color: var(--bg-medium);
-  margin: 1em;
-  padding: .5em 1em;
   border: 4px solid var(--accent-bg);
-  overflow-x: scroll;
-  font-size: 0.8rem;
-  flex-shrink: 1;
-  flex-grow: 1;
+  font-family: var(--mono-font);
+  font-size: var(--code-font-size);
+  margin: 1em;
+  max-width: 80ch;
   min-width: 16em;
-  max-width: 35em;
+  overflow-x: scroll;
+  padding: .5em 1em;
 }
 
 .feature-code .sourceCode {
