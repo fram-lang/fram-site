@@ -80,7 +80,7 @@ Apart from types, Fram statically tracks all side effects in a program,
 ensuring effect safety. However, thanks to effect inference, the programmer
 usually doesn't need to bother writing out effect annotations.
 To learn the basics of Fram's effect system, see the
-[effects tutorial](https://fram-lang.org/intro/effects.html).
+[effects tutorial](https://doc.fram-lang.org/intro/effects.html).
 :::
 
 :::feature-code
