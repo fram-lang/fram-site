@@ -11,8 +11,6 @@ Below we list publications that directly relate to Fram.
   Higher-Rank Polymorphism.**  
   Patrycja Balik, Szymon Jędras, and Piotr Polesiuk.  
   *ESOP 2026*, Turin, Italy, April 2026.  
-  [(doi)](https://doi.org/...)
-  [(pdf)](...)
   [(appendix)](https://github.com/fram-lang/fram-papers/releases/download/esop26/esop26-appendix.pdf)
   [(artifact)](https://doi.org/10.5281/zenodo.18197463)
 
