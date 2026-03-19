@@ -7,15 +7,23 @@ OUTDIR := site
 
 MDFILES := $(wildcard $(SRCDIR)/*.md)
 HTMLFILES := ${MDFILES:$(SRCDIR)/%.md=$(OUTDIR)/%.html}
-TEMPLATES := templates/landing.html templates/fram.xml
+LANDINGTEMPLATE := templates/landing.html
+SIMPLETEMPLATE := templates/simple.html
+SYNTAXDEF := templates/fram.xml
 
 all: $(HTMLFILES) $(OUTDIR)/css $(OUTDIR)/img
 
-$(OUTDIR)/index.html: $(SRCDIR)/index.md $(TEMPLATES) | $(OUTDIR)
+$(OUTDIR)/index.html: $(SRCDIR)/index.md $(LANDINGTEMPLATE) $(SYNTAXDEF) | $(OUTDIR)
 	$(PANDOC) -s -t html \
-		--template templates/landing.html \
-		--syntax-definition templates/fram.xml \
+		--template $(LANDINGTEMPLATE) \
+		--syntax-definition $(SYNTAXDEF) \
 		-o $(OUTDIR)/index.html $(SRCDIR)/index.md
+
+$(OUTDIR)/%.html: $(SRCDIR)/%.md $(SIMPLETEMPLATE) $(SYNTAXDEF) | $(OUTDIR)
+	$(PANDOC) -s -t html \
+		--template $(SIMPLETEMPLATE) \
+		--syntax-definition $(SYNTAXDEF) \
+		-o $@ $<
 
 $(OUTDIR)/css: css | $(OUTDIR)
 	cp -r css $(OUTDIR)
