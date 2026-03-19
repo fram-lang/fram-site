@@ -14,7 +14,7 @@
 
 #splash-text {
   flex-grow: 2;
-  flex-shrink 1;
+  flex-shrink: 1;
   max-width: 40em;
   min-width: 16em;
   padding: 1em 5%;
@@ -22,7 +22,7 @@
 
 #splash-img {
   flex-grow: 1;
-  flex-shrink 1;
+  flex-shrink: 1;
   width: 25vw;
   max-width: 50em;
   margin: 1em;
@@ -97,12 +97,12 @@ main {
   margin: 2em 0;
 }
 
-.feature:nth-child(odd) {
-  flex-direction: row;
+:nth-child(odd of .feature) {
+  flex-direction: row-reverse;
 }
 
-.feature:nth-child(even) {
-  flex-direction: row-reverse;
+:nth-child(even of .feature) {
+  flex-direction: row;
 }
 
 .feature-description {
